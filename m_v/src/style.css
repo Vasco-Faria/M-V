@@ -1,0 +1,56 @@
+/* Reset global */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: Tahoma, Verdana, sans-serif;
+}
+
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  display: flex;
+}
+
+/* Pseudo-elemento para a imagem de fundo com brilho reduzido */
+#app::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/Wallpaper.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(20%);
+  z-index: -1; 
+}
+
+/* Mobile - Permitir scroll e aplicar fundo escuro com brilho */
+@media (max-width: 768px) {
+  html, body {
+    height: auto; 
+    overflow: auto; 
+  }
+  
+  #app::before {
+    content: none;
+  }
+
+  #app {
+    min-height: 100vh; 
+    overflow: visible;
+    background: #222; 
+    
+    
+    box-shadow: inset 10px 0px 15px rgba(255, 255, 255, 0.548), 
+                inset -10px 0px 15px rgba(255, 255, 255, 0.548);
+  }
+}
