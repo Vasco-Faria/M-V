@@ -14,12 +14,12 @@
       :scrollToGroups="() => scrollToSection('groups')"
     />
     
-    <div class="basic-container">
-      <Home v-if="!loading" id="home" />
-      <AboutUs v-if="!loading" id="aboutus" />
-      <tshirts v-if="!loading" id="tshirts"/>
-      <groups v-if="!loading" id="groups"/>
-      <Footer v-if="!loading"/>
+    <div class="basic-container" v-show="!loading" id="basicContainer">
+      <Home id="home" />
+      <AboutUs id="aboutus" />
+      <tshirts id="tshirts"/>
+      <groups id="groups"/>
+      <Footer />
     </div>
   </div>
 </template>
@@ -51,22 +51,31 @@ export default {
     };
   },
   mounted() {
-    // Remove o modal depois de 2 segundos
+    // Remover o modal depois de 2 segundos
     setTimeout(() => {
       this.loading = false;
     }, 2000);
+    this.$nextTick(() => {
+      // Adicionando log para verificar se o id 'home' está acessível
+      console.log(document.getElementById('home')); // Verifique se o id 'home' é encontrado
+    });
   },
   methods: {
     scrollToSection(sectionId) {
-      const container = this.$el.querySelector(".basic-container"); // Obtém o container correto
-      const section = this.$el.querySelector(`#${sectionId}`); // Obtém a seção dentro do container
+      this.$nextTick(() => {
+        // Garantir que o DOM foi atualizado
+        const container = document.getElementById('basicContainer');
+        const section = document.getElementById(sectionId);
 
-      if (container && section) {
-        container.scrollTo({
-          top: section.offsetTop - container.offsetTop, // Ajuste para rolar dentro do container
-          behavior: "smooth",
-        });
-      }
+        if (container && section) {
+          container.scrollTo({
+            top: section.offsetTop - container.offsetTop,
+            behavior: "smooth",
+          });
+        } else {
+          console.error(`Elemento com o id ${sectionId} não encontrado.`);
+        }
+      });
     },
     redirectToLinktree() {
       window.open("https://linktr.ee/seu_link", "_blank");
@@ -74,6 +83,7 @@ export default {
   }
 };
 </script>
+
 
 <style scoped>
 .app2 {
