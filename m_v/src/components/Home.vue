@@ -24,10 +24,10 @@
 
 <script>
     import { library } from "@fortawesome/fontawesome-svg-core";
-    import { faFacebookF, faInstagram, faWhatsapp, faTelegram } from "@fortawesome/free-brands-svg-icons";
+    import { faFacebookF, faInstagram, faWhatsapp, faTelegram, faTiktok } from "@fortawesome/free-brands-svg-icons";
     import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-    library.add(faFacebookF, faInstagram, faWhatsapp,faTelegram);
+    library.add(faFacebookF, faInstagram, faWhatsapp,faTelegram,faTiktok);
 
 
 export default {
@@ -39,8 +39,8 @@ export default {
         return {
             socialLinks: [
         { name: "Facebook", url: "https://www.facebook.com", icon: "facebook-f", class: "facebook" },
-        { name: "Instagram", url: "https://www.instagram.com", icon: "instagram", class: "instagram" },
-        { name: "WhatsApp", url: "https://wa.me/seunumerodetelefone", icon: "whatsapp", class: "whatsapp" },
+        { name: "Instagram", url: "https://www.instagram.com/milesandvibes_runclub/", icon: "instagram", class: "instagram" },
+        { name: "TikTok", url: "https://wa.me/seunumerodetelefone", icon: "tiktok", class: "tiktok" },
         { name: "Telegram", url: "https://t.me/seunome", icon: "telegram", class: "telegram" }
       ]
         }
@@ -58,7 +58,6 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 88vh;
   position: relative;
   text-align: center;
   color: white;

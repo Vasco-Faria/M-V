@@ -1,13 +1,27 @@
 <template>
+  <LoadingModal v-if="loading" :isVisible="loading" />
   <div class="app2">
-  <LoadingModal :isVisible="loading" />
- <Navbar v-if="!loading" />
- <div class="basic-container">
-  <Home v-if="!loading" />
-  <AboutUs v-if="!loading"/>
-  <Footer v-if="!loading"/>
- </div>
-</div>
+    <div class="special-message" v-if="!loading">
+      <h1>Miles And Vibes 👋</h1>
+      <p>Este website está disponível apenas para desktop. <br> Para mais informações, visite o nosso Linktr.ee.</p>
+      <Button label="Linktr.ee" @click="redirectToLinktree"></Button>
+    </div>
+
+    <Navbar v-if="!loading"
+      :scrollToHome="() => scrollToSection('home')"
+      :scrollToAbout="() => scrollToSection('aboutus')"
+      :scrollToTshirts="() => scrollToSection('tshirts')"
+      :scrollToGroups="() => scrollToSection('groups')"
+    />
+    
+    <div class="basic-container">
+      <Home v-if="!loading" id="home" />
+      <AboutUs v-if="!loading" id="aboutus" />
+      <tshirts v-if="!loading" id="tshirts"/>
+      <groups v-if="!loading" id="groups"/>
+      <Footer v-if="!loading"/>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -16,7 +30,9 @@ import Home from "./components/Home.vue";
 import AboutUs from "./components/AboutUs.vue";
 import LoadingModal from "./components/LoadingModal.vue";
 import Footer from "./components/Footer.vue";
-
+import tshirts from "./components/tshirts.vue";
+import groups from "./components/groups.vue";
+import Button from "./components/Button.vue";
 
 export default {
   components: {
@@ -25,10 +41,13 @@ export default {
     AboutUs,
     LoadingModal,
     Footer,
+    tshirts,
+    groups,
+    Button,
   },
   data() {
     return {
-      loading: true, 
+      loading: true,
     };
   },
   mounted() {
@@ -37,44 +56,111 @@ export default {
       this.loading = false;
     }, 2000);
   },
+  methods: {
+    scrollToSection(sectionId) {
+      const container = this.$el.querySelector(".basic-container"); // Obtém o container correto
+      const section = this.$el.querySelector(`#${sectionId}`); // Obtém a seção dentro do container
+
+      if (container && section) {
+        container.scrollTo({
+          top: section.offsetTop - container.offsetTop, // Ajuste para rolar dentro do container
+          behavior: "smooth",
+        });
+      }
+    },
+    redirectToLinktree() {
+      window.open("https://linktr.ee/seu_link", "_blank");
+    }
+  }
 };
 </script>
 
 <style scoped>
-
-.app2{
+.app2 {
   width: 100%;
   height: 100%;
   background-color: transparent;
-  padding-top:18vh !important;
-  padding-bottom: 5vh !important;
+  padding-top: 18vh !important;
 }
 
-.basic-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    height: calc(100vh - 14vh);
-    background-color: transparent;
-    margin: 0 auto;
-    overflow-y: auto !important;
-    gap: 3vh;
+/* Mensagem especial para telas menores */
+.special-message {
+  display: none;
+  text-align: center;
+  margin-top: 20vh;
+}
+
+.special-message h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #5e5e5e;
+}
+
+.special-message p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #ddd;
+  margin-bottom: 20px;
+}
+
+.basic-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background-color: transparent;
+  margin: 0 auto;
+  overflow-y: auto;
+  gap: 7vh;
+  flex-grow: 1;
 }
 
 .basic-container > * {
-    width: 100%;
-    min-height: 100vh; /* Cada componente ocupa a tela toda */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  min-height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ajuste para o componente Home, para garantir que ele ocupe o espaço disponível */
+.basic-container > home {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ajuste do componente Footer para garantir que ele se comporte corretamente */
+.basic-container > *:last-child {
+  height: auto;
+  min-height: 10vh;
+  flex-grow: 0;
 }
 
 .basic-container > *:last-child {
-    width: 100%;
-    height: 10vh;
-    min-height: 10vh; /* Ou qualquer valor desejado */
+  margin-bottom: 15vh;
 }
 
+/* Media Query para telas menores que 1500px */
+@media (max-width: 1500px) {
+  .basic-container,
+  .navbar,
+  .app2 > *:not(.special-message):not(.loading-modal) {
+    display: none;
+  }
+
+  .special-message {
+    display: block;
+    font-size: 2rem;
+    color: #333;
+  }
+
+  /* Estilo específico para o LoadingModal */
+  .loading-modal {
+    display: block !important; /* Garante que o modal apareça em telas pequenas */
+  }
+}
 </style>

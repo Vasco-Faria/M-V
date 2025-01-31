@@ -3,7 +3,7 @@
       <div class="footer-left">
         <div class="left-top">
             <img src="/logo.png" alt="Logo" class="logo">
-            <span class="text">M&V</span>
+            <Button label="Strava Club" style="white-space: nowrap; margin-top: 0; margin-left: 1em;"></Button>
         </div>
         <div class="left-bottom">
             <div class="basr-social-share social">
@@ -27,23 +27,27 @@
   <script>
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-    import { faFacebookF, faInstagram, faWhatsapp, faTelegram } from "@fortawesome/free-brands-svg-icons";
+import { faFacebookF, faInstagram, faWhatsapp, faTelegram, faTiktok } from "@fortawesome/free-brands-svg-icons";
     import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-    library.add(faFacebookF, faInstagram, faWhatsapp,faTelegram);
+    library.add(faFacebookF, faInstagram, faWhatsapp,faTelegram,faTiktok);
+
+
+    import Button from "./Button.vue";
 
 
   export default {
     name: "Footer",
     components: {
         FontAwesomeIcon,
+        Button,
     },
     data(){
         return {
             socialLinks: [
         { name: "Facebook", url: "https://www.facebook.com", icon: "facebook-f", class: "facebook" },
-        { name: "Instagram", url: "https://www.instagram.com", icon: "instagram", class: "instagram" },
-        { name: "WhatsApp", url: "https://wa.me/seunumerodetelefone", icon: "whatsapp", class: "whatsapp" },
+        { name: "Instagram", url: "https://www.instagram.com/milesandvibes_runclub/", icon: "instagram", class: "instagram" },
+        { name: "TikTok", url: "https://wa.me/seunumerodetelefone", icon: "tiktok", class: "tiktok" },
         { name: "Telegram", url: "https://t.me/seunome", icon: "telegram", class: "telegram" }
       ]
         }
@@ -257,6 +261,12 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 }
 .basr-social-share.social li a span {
   display: none;
+}
+
+@media (max-width: 1500px) {
+  .social {
+    display: none;
+  }
 }
   </style>
   

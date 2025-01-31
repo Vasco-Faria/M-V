@@ -2,8 +2,8 @@
     <nav class="navbar">
       <!-- Links à esquerda -->
       <ul class="nav-links left">
-        <li><p>Home</p></li>
-        <li><p>About Us</p></li>
+        <li @click="scrollToHome"><p>Home</p></li>
+        <li @click="scrollToAbout"><p>About Us</p></li>
       </ul>
   
       <!-- Logo -->
@@ -11,8 +11,8 @@
   
       <!-- Links à direita -->
       <ul class="nav-links right">
-        <li><p>T-shirts</p></li>
-        <li><p>Groups</p></li>
+        <li @click="scrollToTshirts"><p>T-shirts</p></li>
+        <li @click="scrollToGroups"><p>Groups</p></li>
       </ul>
   
       <!-- Hamburger Menu -->
@@ -58,12 +58,18 @@
     components: {
         FontAwesomeIcon,
     },
+    props: {
+    scrollToHome: Function,
+    scrollToAbout: Function,
+    scrollToTshirts: Function,
+    scrollToGroups: Function,
+    },
     data() {
       return {
         menuOpen: false,
             socialLinks: [
             { name: "Facebook", url: "https://www.facebook.com", icon: "facebook-f", class: "facebook" },
-            { name: "Instagram", url: "https://www.instagram.com", icon: "instagram", class: "instagram" },
+            { name: "Instagram", url: "https://www.instagram.com/milesandvibes_runclub/", icon: "instagram", class: "instagram" },
             { name: "WhatsApp", url: "https://wa.me/seunumerodetelefone", icon: "whatsapp", class: "whatsapp" },
             { name: "Telegram", url: "https://t.me/seunome", icon: "telegram", class: "telegram" }
             ]

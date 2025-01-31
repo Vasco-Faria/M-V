@@ -17,6 +17,8 @@
   </script>
   
   <style scoped>
+
+
   .title-container {
     --b: 5px;   /* Espessura da borda */
     --a: 35deg; /* Inclinação do lado direito */
