@@ -12,7 +12,7 @@
       <!-- Links à direita -->
       <ul class="nav-links right">
         <li><p>T-shirts</p></li>
-        <li><p>Search your city</p></li>
+        <li><p>Groups</p></li>
       </ul>
   
       <!-- Hamburger Menu -->
@@ -31,7 +31,7 @@
         <li><p>Home</p></li>
         <li><p>About Us</p></li>
         <li><p>T-shirts</p></li>
-        <li><p>Search your city</p></li>
+        <li><p>Groups</p></li>
         </ul>
         <div class="basr-social-share social">
             <ul>
@@ -64,7 +64,8 @@
             socialLinks: [
             { name: "Facebook", url: "https://www.facebook.com", icon: "facebook-f", class: "facebook" },
             { name: "Instagram", url: "https://www.instagram.com", icon: "instagram", class: "instagram" },
-            { name: "WhatsApp", url: "https://wa.me/seunumerodetelefone", icon: "whatsapp", class: "whatsapp" }
+            { name: "WhatsApp", url: "https://wa.me/seunumerodetelefone", icon: "whatsapp", class: "whatsapp" },
+            { name: "Telegram", url: "https://t.me/seunome", icon: "telegram", class: "telegram" }
             ]
         };
     },
@@ -210,15 +211,15 @@
 }
   
   .side-menu .side-logo {
-    height: 150px;
+    height: 100px;
   }
   
   /* Botão de fechar o menu */
   .close-btn {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 2rem;
+    top: 30px;
+    right: 40px;
+    font-size: 1.5rem;
     color: white;
     cursor: pointer;
   }
@@ -304,6 +305,12 @@
   list-style: none;
   padding-left: 0;
   padding-right: 0;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
 }
 
 .social ul li:nth-child(1) {
@@ -402,8 +409,8 @@
 @media only screen and (max-width: 480px) {
   .social ul li a {
     background-size: cover;
-    top: -5px;
-    left: -5px;
+    top: -8px;
+    left: -2px;
     width: 45px;
     height: 45px;
     line-height: 45px;
@@ -576,8 +583,9 @@
       right: 1em;
       transform: none;
       font-size: 1rem;
-      height: 100px;
+      height: 75px;
     }
   }
+
   </style>
   

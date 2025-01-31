@@ -1,37 +1,40 @@
 <template>
-   <div class="home-container">
-    <div class="home-wrapper">
-      <div class="content">
-        <h1 class="title">Miles And Vibes</h1>
-        <p class="subtitle">Run Community & Club 🏃🫡 🔫 In a mission to join people all over the world to run! </p>
-      </div>
-
-      <div class="basr-social-share social">
+    <footer class="footer">
+      <div class="footer-left">
+        <div class="left-top">
+            <img src="/logo.png" alt="Logo" class="logo">
+            <span class="text">M&V</span>
+        </div>
+        <div class="left-bottom">
+            <div class="basr-social-share social">
               <ul>
-              <li v-for="(social, index) in socialLinks" :key="index">
-                  <a :href="social.url" target="_blank" :class="social.class">
-                  <font-awesome-icon :icon="['fab', social.icon]" />
-                  <span>{{ social.name }}</span>
-                  </a>
-              </li>
+                <li v-for="(social, index) in socialLinks" :key="index">
+                    <a :href="social.url" target="_blank" :class="social.class">
+                    <font-awesome-icon :icon="['fab', social.icon]" />
+                    <span>{{ social.name }}</span>
+                    </a>
+                </li>
               </ul>
+            </div>
+        </div>
       </div>
+      <div class="footer-right">
+        <a href="https://vascomfaria.com/" target="_blank" rel="noopener noreferrer">Made by Vasco Faria</a>
+      </div>
+    </footer>
+  </template>
+  
+  <script>
 
-    </div>
-  </div>
-    
-</template>
-
-<script>
-    import { library } from "@fortawesome/fontawesome-svg-core";
+import { library } from "@fortawesome/fontawesome-svg-core";
     import { faFacebookF, faInstagram, faWhatsapp, faTelegram } from "@fortawesome/free-brands-svg-icons";
     import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
     library.add(faFacebookF, faInstagram, faWhatsapp,faTelegram);
 
 
-export default {
-    name: "Home",
+  export default {
+    name: "Footer",
     components: {
         FontAwesomeIcon,
     },
@@ -45,98 +48,82 @@ export default {
       ]
         }
     }
-
-}
-</script>
-
-<style scoped>
-
-.home-container {
-  width: 100%;
-  height: 88vh !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 88vh;
-  position: relative;
-  text-align: center;
-  color: white;
-}
-
-.home-wrapper{
-  width: 80%;
-  display: flex;
-  height: 100%;
-  margin: auto auto;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.content {
-  max-width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-}
-
-.title {
-  font-size: 4rem;
-  font-weight: bold;
-  margin: 0;
-}
-
-.subtitle {
-  font-size: 1.5rem;
-  opacity: 0.8;
-}
-
-
-.icon {
-  font-size: 2rem;
-  text-decoration: none;
-  color: white;
-  transition: transform 0.3s ease-in-out;
-}
-
-.icon:hover {
-  transform: scale(1.2);
-}
-
-.custom-text {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  text-decoration: none;
-  font-size: 1rem;
-  opacity: 0.8;
-  cursor: pointer;
-}
-
-.custom-text:after {
-    content: "";
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: white;
-    transition: width 0.3s ease-in-out;
+  };
+  </script>
+  
+  <style scoped>
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 15vh !important;
+    background-color: transparent;
+    color: white;
+    padding-bottom: 5vh;
   }
   
-  .custom-text:hover::after {
-    width: 100%;
+  .footer-left {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    width: 35%;
+    
+  }
+  
+
+
+
+  .left-top{
+    text-align: end;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;  
+    width: 30%;
+  }
+
+  .logo {
+  height: 60px; /* Ajusta conforme necessário */
+  width: auto;
+}
+  
+
+  .left-bottom{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .text {
+  font-size: 16px; /* Ajusta o tamanho do texto */
+  color: white; /* Define a cor do texto */
+}
+
+  .footer-right {
+    width: 25%;
+    height: 100%;
+    
+    text-align: end;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;    
+  }
+
+  .footer-right a {
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit; /* Herda a cor do pai, removendo o azul padrão */
+}
+
+
+  .footer-right a:hover{
+    text-decoration: underline;
   }
 
 
 .basr-social-share {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
+  flex-direction: row;
   gap: 10px;
 }
 
@@ -271,31 +258,5 @@ export default {
 .basr-social-share.social li a span {
   display: none;
 }
-
-@media (max-width: 1200px) {
-  .social {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-
-  .content{
-    width: 100%;
-  }
-  .title {
-    font-size: 3rem;
-    padding-bottom:1em ;
-  }
-
-  .subtitle {
-    font-size: 1rem;
-    
-  }
-
-  .social {
-    display: none; /* Esconder social links no mobile */
-  }
-}
-
-</style>
+  </style>
+  
