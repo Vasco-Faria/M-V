@@ -11,7 +11,7 @@
   
       <!-- Links à direita -->
       <ul class="nav-links right">
-        <li @click="scrollToTshirts"><p>T-shirts</p></li>
+        <li @click="scrollToTshirts"><p>Clothing</p></li>
         <li @click="scrollToGroups"><p>Groups</p></li>
       </ul>
   
@@ -30,7 +30,7 @@
         <ul class="side-links">
         <li><p>Home</p></li>
         <li><p>About Us</p></li>
-        <li><p>T-shirts</p></li>
+        <li><p>Clothing</p></li>
         <li><p>Groups</p></li>
         </ul>
         <div class="basr-social-share social">
